@@ -1,2 +1,2 @@
 # etch-a-sketch
-Modern implementation of the classic Etch A Sketch
+Modern implementation of the classic Etch A Sketch toy
