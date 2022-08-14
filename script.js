@@ -3,13 +3,23 @@ let drawColour = '#3A3A3A';
 let isColorMode = false;
 const maxSize = 64;
 
-const container = document.querySelector('#container');
-container.setAttribute('style', `grid-template-columns: repeat(${gridSize}, 1fr)`);
+function generateGrid(gridSize){
+    const container = document.querySelector('#container');
+    container.setAttribute('style', `grid-template-columns: repeat(${gridSize}, 1fr)`);
 
-for (let i=0; i<gridSize**2; i++){
-    let square = document.createElement('div');
-    container.appendChild(square);
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+        square.remove();
+    });
+
+    for (let i=0; i<gridSize**2; i++){
+        let newSquare = document.createElement('div');
+        newSquare.classList.add("square");
+        container.appendChild(newSquare);
+    }
 }
+
+generateGrid(gridSize);
 
 function draw(){
     square.setAttribute('style', `background: ${drawColour};`);
@@ -23,6 +33,9 @@ function setModeToRegular(){
     return 0;
 }
 
-function setGridSize(){
-    return 0;
+const slider = document.getElementById("range-slider");
+
+slider.oninput = function(){
+    gridSize = this.value;
+    generateGrid(gridSize);
 }
