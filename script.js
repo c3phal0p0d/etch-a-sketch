@@ -15,16 +15,20 @@ function generateGrid(gridSize){
     for (let i=0; i<gridSize**2; i++){
         let newSquare = document.createElement('div');
         newSquare.classList.add("square");
-        newSquare.addEventListener('mouseover', function handleMouseOver() {
+        newSquare.addEventListener('mouseover', () => {
             newSquare.style.background = drawColour;
         });
         container.appendChild(newSquare);
     }
-
-
 }
 
 generateGrid(gridSize);
+
+const reset = document.getElementById("reset");
+
+reset.addEventListener('click', () => {
+    generateGrid(gridSize);
+});
 
 
 function setModeToColour(){
